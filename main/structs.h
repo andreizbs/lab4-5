@@ -6,7 +6,7 @@
 using namespace std;
 
 ofstream fout("out.txt", ios::app);
-ifstream fin("data.txt", ios::app);
+ifstream fin("data.txt", ios::in);
 
 struct time {
 	int hours;
@@ -19,7 +19,6 @@ struct doclad {
 	string name;
 	string otchestvo;
 	string project;
-	int longer;
 };
 
 struct doclad input() {
@@ -52,117 +51,15 @@ void output(struct doclad work) {
 	
 	fout << work.start.hours << ":";
 	if (work.start.minutes<10)
-		fout << "0" << work.start.minutes << " ";
+		fout << work.start.minutes << "0 ";
 	else 
 		fout << work.start.minutes << " ";
 	fout << work.end.hours << ":";
 	if (work.end.minutes < 10)
-		fout << "0" << work.end.minutes << " ";
+		fout << work.end.minutes << "0 ";
 	else
 		fout << work.end.minutes << " ";
 	fout << work.surname << " " << work.name << " " << work.otchestvo << " " << work.project << endl;
 }
 
-void maxHeapify(std::vector<int>& arr, int n, int i) {
-	int largest = i;
-	int left = 2 * i + 1;
-	int right = 2 * i + 2;
-
-	if (left < n && arr[left] > arr[largest]) {
-		largest = left;
-	}
-
-	if (right < n && arr[right] > arr[largest]) {
-		largest = right;
-	}
-
-	if (largest != i) {
-		swap(arr[i], arr[largest]);
-		maxHeapify(arr, n, largest);
-	}
-}
-
-void heapSort(std::vector<int>& arr) {
-	int n = arr.size();
-
-	for (int i = n / 2 - 1; i >= 0; i--) {
-		maxHeapify(arr, n, i);
-	}
-
-	for (int i = n - 1; i >= 0; i--) {
-		swap(arr[0], arr[i]);
-		maxHeapify(arr, i, 0);
-	}
-}
-
-void removeDuplicates(vector<int>& arr) {
-	int n = arr.size();
-	if (n == 0 || n == 1) {
-		return;
-	}
-
-	int j = 0;
-	for (int i = 0; i < n - 1; i++) {
-		if (arr[i] != arr[i + 1]) {
-			arr[j++] = arr[i];
-		}
-	}
-	arr[j++] = arr[n - 1];
-
-	while (j < n) {
-		arr.pop_back();
-		j++;
-	}
-}
-
-void merge(vector<int>& arr, int left, int mid, int right) {
-	int n1 = mid - left + 1;
-	int n2 = right - mid;
-
-	vector<int> L(n1);
-	vector<int> R(n2);
-
-	for (int j = 0; j < n1; j++) {
-		L[j] = arr[left + j];
-	}
-	for (int j = 0; j < n2; j++) {
-		R[j] = arr[mid + 1 + j];
-	}
-
-	int o = 0, j = 0, k = left;
-	while (o < n1 && j < n2) {
-		if (L[o] <= R[j]) {
-			arr[k] = L[o];
-			o++;
-		}
-		else {
-			arr[k] = R[j];
-			j++;
-		}
-		k++;
-	}
-
-	while (o < n1) {
-		arr[k] = L[o];
-		o++;
-		k++;
-	}
-
-	while (j < n2) {
-		arr[k] = R[j];
-		j++;
-		k++;
-	}
-}
-
-void mergeSort(vector<int>& arr, int left, int right) {
-	if (left < right) {
-		int mid = left + (right - left) / 2;
-
-		mergeSort(arr, left, mid);
-		mergeSort(arr, mid + 1, right);
-
-		merge(arr, left, mid, right);
-	}
-}
-
+struct doclad first;
