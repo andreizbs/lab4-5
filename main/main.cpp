@@ -2,7 +2,6 @@
 using namespace std;
 
 int main(){
-  setlocate(LC_ALL,"Russian");
-  cout << "Вариант 2. \nПрограмма конференции. \nГолубенцев Андрей";
+  cout << "Variant 2. \nConference program. \nGolubentsev Andrei";
   return 0;
 }
