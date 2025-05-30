@@ -1,1 +1,1 @@
-#include "pch.h"
+int process(struct doclad f, struct doclad s, struct doclad t);
