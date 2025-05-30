@@ -72,5 +72,6 @@ int main(){
 			  if (surnames[j] == (arr[h].surname)[0])
 				  output(arr[h]);
   }
+  fout << "\n\n";
   return 0;
 }
