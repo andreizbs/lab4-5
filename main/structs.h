@@ -26,11 +26,13 @@ struct doclad input() {
 	struct doclad work;
 	string a;
 	getline(fin, a);
+	
 	int b = 12, i = 12;
 	work.start.hours = (a[0]-'0') * 10 + (a[1]-'0');
 	work.start.minutes = (a[3]-'0') * 10 + (a[4]-'0');
 	work.end.hours = (a[6]-'0') * 10 + (a[7] - '0');
 	work.end.minutes = (a[9]-'0') * 10 + (a[10]-'0');
+	
 	while (a[i] != ' ')
 		i++;
 	work.surname = a.substr(b, i-b);
