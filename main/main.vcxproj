@@ -134,7 +134,6 @@
     <Text Include="data.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="consts.h" />
     <ClInclude Include="proccesing.h" />
     <ClInclude Include="structs.h" />
   </ItemGroup>
